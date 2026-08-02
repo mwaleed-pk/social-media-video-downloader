@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="FastSave - All-in-One Media Downloader. Download videos and audio from YouTube, TikTok, Facebook, Instagram in HD quality. Fast, Free & No Login." />
+  <title>FastSave – All-in-One Media Downloader</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════ NAVBAR ═══════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="url(#bolt-gradient)"/>
+            <defs>
+              <linearGradient id="bolt-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#7c6fff"/>
+                <stop offset="100%" style="stop-color:#4f8fff"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">FastSave</span>
+      </div>
+
+      <div class="nav-menu" id="navMenu">
+        <ul class="nav-links">
+          <li><a href="#" class="nav-link active" id="nav-home">Home</a></li>
+          <li><a href="#how-to-use" class="nav-link" id="nav-how">How to Use</a></li>
+          <li><a href="#features" class="nav-link" id="nav-features">Features</a></li>
+          <li><a href="#support" class="nav-link" id="nav-support">Support</a></li>
+          <li><a href="#about" class="nav-link" id="nav-about">About</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <div class="lang-selector" id="langSelector">
+            <span>English</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+            <ul class="lang-dropdown" id="langDropdown">
+              <li data-lang="English">English</li>
+              <li data-lang="Español">Español</li>
+              <li data-lang="Français">Français</li>
+              <li data-lang="Deutsch">Deutsch</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-right-actions">
+        <button class="theme-toggle" id="themeToggle" title="Toggle theme" aria-label="Toggle dark/light mode">
+          <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="hero" id="home">
+    <div class="hero-bg-orbs">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-title">All-in-One <span class="gradient-text">Media Downloader</span></h1>
+      <p class="hero-subtitle">
+        Download videos and audio from YouTube, TikTok, Facebook, Instagram<br />
+        in HD quality. Fast, Free &amp; No Login.
+      </p>
+
+      <!-- URL Input -->
+      <div class="url-input-wrapper" id="urlInputWrapper">
+        <div class="url-input-box">
+          <span class="url-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+            </svg>
+          </span>
+          <input
+            type="url"
+            id="videoUrl"
+            class="url-input"
+            placeholder="Paste your video link here..."
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button class="clear-url-btn" id="clearUrlBtn" aria-label="Clear input" hidden title="Clear link & preview">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+          <button class="download-btn" id="fetchBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            Download
+          </button>
+        </div>
+        <p class="auto-detect-hint">
+          Paste link and select platform or it will be detected <span class="highlight-auto">automatically.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PLATFORM CARDS ═══════════════ -->
+  <section class="platforms-section" id="platforms">
+    <div class="platforms-grid">
+
+      <!-- YouTube -->
+      <div class="platform-card youtube-card" id="card-youtube" data-platform="youtube" role="button" tabindex="0" aria-label="Download from YouTube">
+        <div class="platform-card-header">
+          <div class="platform-logo yt-logo">
+            <svg viewBox="0 0 24 24" width="38" height="38">
+              <path fill="#FF0000" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/>
+              <polygon fill="#FFF" points="9.545,15.568 15.818,12 9.545,8.432"/>
+            </svg>
+          </div>
+          <div class="platform-info">
+            <h3 class="platform-name">YouTube</h3>
+            <span class="platform-sub">Videos &amp; Audio</span>
+          </div>
+        </div>
+        <button class="platform-download-btn yt-btn" id="btn-youtube" data-platform="youtube">
+          Download Now →
+        </button>
+      </div>
+
+      <!-- TikTok -->
+      <div class="platform-card tiktok-card" id="card-tiktok" data-platform="tiktok" role="button" tabindex="0" aria-label="Download from TikTok">
+        <div class="platform-card-header">
+          <div class="platform-logo tt-logo">
+            <svg viewBox="0 0 24 24" width="38" height="38">
+              <path fill="#fff" d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.32 6.32 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.02a8.16 8.16 0 0 0 4.77 1.52V7.1a4.85 4.85 0 0 1-1-.41z"/>
+            </svg>
+          </div>
+          <div class="platform-info">
+            <h3 class="platform-name">TikTok</h3>
+            <span class="platform-sub">Videos &amp; Audio</span>
+          </div>
+        </div>
+        <button class="platform-download-btn tt-btn" id="btn-tiktok" data-platform="tiktok">
+          Download Now →
+        </button>
+      </div>
+
+      <!-- Facebook -->
+      <div class="platform-card facebook-card" id="card-facebook" data-platform="facebook" role="button" tabindex="0" aria-label="Download from Facebook">
+        <div class="platform-card-header">
+          <div class="platform-logo fb-logo">
+            <svg viewBox="0 0 24 24" width="38" height="38">
+              <circle cx="12" cy="12" r="12" fill="#1877F2"/>
+              <path fill="#fff" d="M16.671 15.469l.543-3.536h-3.396V9.748c0-.968.473-1.912 2.001-1.912h1.548V4.748S15.93 4.5 14.546 4.5c-2.797 0-4.627 1.695-4.627 4.763v2.67H6.75v3.536h3.169V24h3.899v-8.531h2.853z"/>
+            </svg>
+          </div>
+          <div class="platform-info">
+            <h3 class="platform-name">Facebook</h3>
+            <span class="platform-sub">Videos &amp; Audio</span>
+          </div>
+        </div>
+        <button class="platform-download-btn fb-btn" id="btn-facebook" data-platform="facebook">
+          Download Now →
+        </button>
+      </div>
+
+      <!-- Instagram -->
+      <div class="platform-card instagram-card" id="card-instagram" data-platform="instagram" role="button" tabindex="0" aria-label="Download from Instagram">
+        <div class="platform-card-header">
+          <div class="platform-logo ig-logo">
+            <svg viewBox="0 0 24 24" width="38" height="38">
+              <defs>
+                <linearGradient id="ig-grad" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <stop offset="0%" style="stop-color:#f09433"/>
+                  <stop offset="25%" style="stop-color:#e6683c"/>
+                  <stop offset="50%" style="stop-color:#dc2743"/>
+                  <stop offset="75%" style="stop-color:#cc2366"/>
+                  <stop offset="100%" style="stop-color:#bc1888"/>
+                </linearGradient>
+              </defs>
+              <rect width="24" height="24" rx="5.5" fill="url(#ig-grad)"/>
+              <path fill="#fff" d="M12 7.378a4.622 4.622 0 1 0 0 9.244 4.622 4.622 0 0 0 0-9.244zm0 7.622a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm4.804-7.808a1.08 1.08 0 1 1-2.16 0 1.08 1.08 0 0 1 2.16 0z"/>
+            </svg>
+          </div>
+          <div class="platform-info">
+            <h3 class="platform-name">Instagram</h3>
+            <span class="platform-sub ig-sub">Reels &amp; Videos</span>
+          </div>
+        </div>
+        <button class="platform-download-btn ig-btn" id="btn-instagram" data-platform="instagram">
+          Download Now →
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════ DOWNLOAD OPTIONS + PREVIEW ═══════════════ -->
+  <section class="options-preview-section" id="options-preview">
+    <div class="options-preview-grid">
+
+      <!-- Download Options -->
+      <div class="options-card" id="downloadOptionsCard">
+        <div class="card-header-row">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="card-header-icon">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/>
+          </svg>
+          <h2 class="card-title">Download Options</h2>
+        </div>
+
+        <!-- Video / Audio tabs -->
+        <div class="format-tabs" id="formatTabs" role="tablist">
+          <button class="format-tab active" id="tab-video" data-tab="video" role="tab" aria-selected="true" aria-controls="panel-video">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="7" width="20" height="10" rx="2"/>
+              <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+            </svg>
+            Video
+          </button>
+          <button class="format-tab" id="tab-audio" data-tab="audio" role="tab" aria-selected="false" aria-controls="panel-audio">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 18V5l12-2v13"/>
+              <circle cx="6" cy="18" r="3"/>
+              <circle cx="18" cy="16" r="3"/>
+            </svg>
+            Audio
+          </button>
+        </div>
+
+        <!-- Video Panel -->
+        <div class="tab-panel active" id="panel-video" role="tabpanel">
+          <p class="quality-label">Video Quality</p>
+          <div class="quality-grid" id="qualityGrid">
+            <button class="quality-btn active" id="q-1080" data-quality="1080" aria-pressed="true">
+              <div class="quality-top">
+                <span class="quality-res">1080p</span>
+                <svg class="q-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span class="quality-label-sub">Full HD</span>
+            </button>
+            <button class="quality-btn" id="q-720" data-quality="720" aria-pressed="false">
+              <div class="quality-top"><span class="quality-res">720p</span></div>
+              <span class="quality-label-sub">HD</span>
+            </button>
+            <button class="quality-btn" id="q-480" data-quality="480" aria-pressed="false">
+              <div class="quality-top"><span class="quality-res">480p</span></div>
+              <span class="quality-label-sub">SD</span>
+            </button>
+            <button class="quality-btn" id="q-best" data-quality="best" aria-pressed="false">
+              <div class="quality-top"><span class="quality-res">Best</span></div>
+              <span class="quality-label-sub">Quality</span>
+            </button>
+          </div>
+
+          <div class="type-grid" id="typeGrid">
+            <button class="type-btn active" id="type-mp4" data-type="mp4" aria-pressed="true">
+              <div class="type-icon mp4-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                </svg>
+              </div>
+              <div class="type-info">
+                <span class="type-name">MP4 Video</span>
+                <span class="type-sub">High Quality Video</span>
+              </div>
+            </button>
+            <button class="type-btn" id="type-mp3" data-type="mp3" aria-pressed="false">
+              <div class="type-icon mp3-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 18V5l12-2v13"/>
+                  <circle cx="6" cy="18" r="3"/>
+                  <circle cx="18" cy="16" r="3"/>
+                </svg>
+              </div>
+              <div class="type-info">
+                <span class="type-name">MP3 Audio</span>
+                <span class="type-sub">Extract Audio</span>
+              </div>
+            </button>
+            <button class="type-btn" id="type-thumb" data-type="thumbnail" aria-pressed="false">
+              <div class="type-icon thumb-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/>
+                  <circle cx="8.5" cy="8.5" r="1.5"/>
+                  <polyline points="21 15 16 10 5 21"/>
+                </svg>
+              </div>
+              <div class="type-info">
+                <span class="type-name">Thumbnail</span>
+                <span class="type-sub">Download Image</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Audio Panel -->
+        <div class="tab-panel" id="panel-audio" role="tabpanel" hidden>
+          <div class="audio-options">
+            <p class="quality-label">Audio Quality</p>
+            <div class="quality-grid">
+              <button class="quality-btn active" data-quality="320" aria-pressed="true">
+                <div class="quality-top"><span class="quality-res">320k</span></div>
+                <span class="quality-label-sub">Best</span>
+              </button>
+              <button class="quality-btn" data-quality="192" aria-pressed="false">
+                <div class="quality-top"><span class="quality-res">192k</span></div>
+                <span class="quality-label-sub">High</span>
+              </button>
+              <button class="quality-btn" data-quality="128" aria-pressed="false">
+                <div class="quality-top"><span class="quality-res">128k</span></div>
+                <span class="quality-label-sub">Normal</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Start Download Button -->
+        <button class="start-download-btn" id="startDownloadBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Start Download
+        </button>
+
+        <!-- Circular Progress (hidden by default) -->
+        <div class="progress-wrapper" id="progressWrapper" hidden>
+          <div class="circular-progress">
+            <svg class="progress-ring" width="60" height="60">
+              <circle class="progress-ring__circle-bg" stroke-width="4" fill="transparent" r="26" cx="30" cy="30"/>
+              <circle class="progress-ring__circle" id="progressCircle" stroke-width="4" fill="transparent" r="26" cx="30" cy="30"/>
+            </svg>
+            <span class="progress-percent" id="progressPercent">0%</span>
+          </div>
+          <span class="progress-text" id="progressText">Starting download...</span>
+        </div>
+
+      </div>
+
+      <!-- Preview Card -->
+      <div class="preview-card" id="previewCard">
+        <div class="card-header-row">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="card-header-icon">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+          <h2 class="card-title">Preview</h2>
+        </div>
+
+        <div class="thumbnail-wrapper" id="thumbnailWrapper">
+          <img id="thumbnailImg" src="" alt="Video thumbnail" class="thumbnail-img" />
+          <div class="thumbnail-placeholder" id="thumbPlaceholder">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+              <rect x="2" y="7" width="20" height="10" rx="2"/>
+              <path d="M9.5 10l5 2-5 2V10z" fill="currentColor"/>
+            </svg>
+            <span>Thumbnail will appear here</span>
+          </div>
+          <div class="duration-badge" id="durationBadge" hidden></div>
+        </div>
+
+        <div class="video-meta" id="videoMeta">
+          <h3 class="video-title" id="videoTitle">Sample Video Title</h3>
+          <p class="video-author" id="videoAuthor">by Content Creator</p>
+
+          <div class="meta-grid">
+            <div class="meta-row">
+              <span class="meta-key">Platform</span>
+              <span class="meta-val platform-val" id="metaPlatform">—</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-key">Duration</span>
+              <span class="meta-val" id="metaDuration">—</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-key">Quality</span>
+              <span class="meta-val" id="metaQuality">—</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-key">Size</span>
+              <span class="meta-val" id="metaSize">—</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════ STATUS TOAST ═══════════════ -->
+  <div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+  <!-- ═══════════════ STUNNING FEATURES ═══════════════ -->
+  <section class="features-showcase" id="features">
+    <div class="section-container">
+      <div class="section-header-center">
+        <h2 class="section-heading gradient-text">Why Choose FastSave?</h2>
+        <p class="section-subheading">Experience the ultimate media downloading tool built with cutting-edge technology.</p>
+      </div>
+      
+      <div class="features-grid-stunning">
+        <div class="feat-card glass-panel">
+          <div class="feat-icon-wrapper feat-purple">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <h3 class="feat-title">Ultra-Fast Downloads</h3>
+          <p class="feat-desc">Our backend uses concurrent 10x multi-threading fragment downloads, giving you unparalleled speed that maxes out your bandwidth.</p>
+        </div>
+
+        <div class="feat-card glass-panel">
+          <div class="feat-icon-wrapper feat-pink">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M7 11v2M12 11v2M17 11v2"/></svg>
+          </div>
+          <h3 class="feat-title">True 4K & HD Quality</h3>
+          <p class="feat-desc">We fetch the absolute highest quality available. Whether it's 1080p, 4K, or even 8K, you get exactly what the creator uploaded without compression.</p>
+        </div>
+
+        <div class="feat-card glass-panel">
+          <div class="feat-icon-wrapper feat-blue">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+          </div>
+          <h3 class="feat-title">All Platforms Supported</h3>
+          <p class="feat-desc">One tool for everything. YouTube videos, TikToks without watermarks, Instagram Reels, and Facebook Watch — seamlessly supported.</p>
+        </div>
+
+        <div class="feat-card glass-panel">
+          <div class="feat-icon-wrapper feat-teal">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="feat-title">100% Safe & Secure</h3>
+          <p class="feat-desc">No sketchy ads, no popups, and zero tracking. We process your download securely on our servers and deliver a clean, virus-free file to your device.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ HOW TO USE ═══════════════ -->
+  <section class="how-section" id="how-to-use">
+    <div class="section-container">
+      <h2 class="section-heading">How to Use</h2>
+      <div class="steps-grid">
+        <div class="step-card" id="step-1">
+          <div class="step-num">1</div>
+          <h3>Copy URL</h3>
+          <p>Copy the video link from YouTube, TikTok, Facebook, or Instagram.</p>
+        </div>
+        <div class="step-card" id="step-2">
+          <div class="step-num">2</div>
+          <h3>Paste &amp; Fetch</h3>
+          <p>Paste the URL in the input box and click Download to fetch info.</p>
+        </div>
+        <div class="step-card" id="step-3">
+          <div class="step-num">3</div>
+          <h3>Select Format</h3>
+          <p>Choose your preferred quality and format (MP4, MP3, Thumbnail).</p>
+        </div>
+        <div class="step-card" id="step-4">
+          <div class="step-num">4</div>
+          <h3>Download</h3>
+          <p>Click Start Download and save the file to your device instantly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SUPPORT SECTION ═══════════════ -->
+  <section class="support-section" id="support">
+    <div class="section-container">
+      <div class="support-card glass-panel">
+        <div class="support-icon-glow">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </div>
+        <h2 class="support-title">Need Help or Have Feedback?</h2>
+        <p class="support-desc">
+          We are always here to assist you. Whether you have a question, feature request, or just want to say hi, drop us an email anytime. We usually respond within 24 hours.
+        </p>
+        <a href="mailto:waleedawang2020@gmail.com" class="support-email-btn">
+          <span class="email-text">waleedawang2020@gmail.com</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="22" y1="2" x2="11" y2="13"/>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ABOUT MW TRADER ═══════════════ -->
+  <section class="about-section" id="about">
+    <div class="about-container">
+      <div class="about-card">
+        <div class="about-avatar-wrapper">
+          <div class="about-avatar">
+            <img src="profile.png" alt="MW Trader" class="about-avatar-img">
+          </div>
+          <div class="about-glow"></div>
+        </div>
+        <div class="about-content">
+          <h2 class="about-name">Muhammad Waleed</h2>
+          <h3 class="about-handle gradient-text">MW Trader</h3>
+          <p class="about-desc">
+            Passionate Software Engineer, Tech Enthusiast & Professional Trader. Widely recognized across all major social platforms as <strong>MW Trader</strong>. Waleed merges technical excellence with market intuition to build high-performance, beautiful, and empowering solutions for users worldwide.
+          </p>
+          <div class="about-badges">
+            <span class="badge">💻 Full-Stack Dev</span>
+            <span class="badge">📈 Pro Trader</span>
+            <span class="badge">🚀 UI/UX Expert</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">
+          <div class="logo-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" fill="url(#bolt-gradient2)"/>
+              <defs>
+                <linearGradient id="bolt-gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#7c6fff"/>
+                  <stop offset="100%" style="stop-color:#4f8fff"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <span class="logo-text">FastSave</span>
+        </div>
+        <p class="footer-desc">All-in-One Media Downloader for YouTube, TikTok, Facebook &amp; Instagram.</p>
+      </div>
+      <p class="footer-copy">© 2025 FastSave. For personal use only. Respect content creator rights.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
